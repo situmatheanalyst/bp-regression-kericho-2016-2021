@@ -145,3 +145,30 @@ We express gratitude to:
 This project is for **academic purposes** and submitted in partial fulfillment of the BSc. in Statistics program at Kirinyaga University.
 
 ---
+---
+title: "Hypertension Data Analysis"
+author: "patrick Situma (Situma the Analyst)"
+date: "`r Sys.Date()`"
+output: R_document
+---
+
+# 4.1 Importing Data from Excel and Extracting Variables
+
+The data to be examined is initially entered into Excel (or CSV) and then exported to R for analysis.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+# Extract each variable
+blood_pressure <- data$blood_pressure
+age <- data$age
+weight <- data$weight
+cholesterol <- data$cholesterol
+library(car)
+
+# Fit a regression model
+model <- lm(blood_pressure ~ age + weight + cholesterol, data = data)
+
+# Check Variance Inflation Factor (VIF)
+vif(model)
+
+---
